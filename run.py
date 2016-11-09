@@ -15,6 +15,7 @@ def read_config(ctx, param, value):
     def underline_dict(d):
         if not isinstance(d, dict):
             return d
+        # transfer dicts' key recursive
         return dict((k.replace('-', '_'), underline_dict(v)) for k, v in d.items())
 
     config = underline_dict(json.load(value))
